@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://openexchangerates.org/api/historical';
-const APP_ID = '712762a538a840d28437072104ceefb4';
+const APP_ID = 'eabb5dfdfdd743f3a71f5b84bc3058d0';
 
 export const getExchangeRates = async (date) => {
   try {

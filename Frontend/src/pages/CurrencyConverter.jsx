@@ -18,11 +18,22 @@ export default function CurrencyConverter() {
   const convert = async () => {
     try {
       setError(null); // Reset error state
+      //Test
+      console.log('Amount:', amount);
+      console.log('Date:', date);
+      console.log('Source Currency:', sourceCurrency);
+      console.log('Target Currency:', targetCurrency);
+
       const rates = await getExchangeRates(date);
+      console.log('API response:', rates);
+
       const rate = rates[targetCurrency] / rates[sourceCurrency];
-      setConvertedAmount(amount * rate);
+      const result = amount * rate;
+      console.log(`Conversion: ${amount} ${sourceCurrency} = ${result} ${targetCurrency}`);
+
+      setConvertedAmount(result);
     } catch (error) {
-      setError('Error fetching exchange rates. Please try again later.');
+      setError('Please check input data *Date*.');
       setConvertedAmount(null);
     }
   };
@@ -88,7 +99,7 @@ export default function CurrencyConverter() {
         )}
         {convertedAmount && (
           <p className="text-center text-lg font-semibold mt-4 text-red-600">
-            Converted Amount: {convertedAmount} {targetCurrency}
+            Convert Amount : {convertedAmount} {targetCurrency}
           </p>
         )}
       </div>
